@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import
+    Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+    Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"
+    />
+
+  <!-- Project Metadata -->
+  <PropertyGroup>
+    <AssemblyName>ChaosUtil.Platform</AssemblyName>
+    <RootNamespace>ChaosUtil.Platform</RootNamespace>
+    <ProjectGuid>{B6470CE7-0195-4EEF-80AF-ACD43AA1FCF2}</ProjectGuid>
+  </PropertyGroup>
+
+  <!-- Properties -->
+  <Import Project="submodules/ChaosPresets.Targets/Properties/Library.targets" />
+  <Import Project="submodules/ChaosPresets.Targets/Paths/Output/bin.targets" />
+  <PropertyGroup>
+    <DocumentationFile>$(OutputPath)\$(AssemblyName).xml</DocumentationFile>
+  </PropertyGroup>
+
+  <!-- Configurations -->
+  <Import Project="submodules/ChaosPresets.Targets/Configurations.targets" />
+
+  <!-- References -->
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <COMReference Include="Shell32">
+      <Guid>{50A7E9B0-70EF-11D1-B75A-00A0C90564FE}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <!-- Included Files -->
+  <ItemGroup>
+    <Compile Include="source\**\*.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+
+    <None Include="License\*.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- Default Targets for Building CSharp Projects -->
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
