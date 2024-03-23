@@ -7,13 +7,17 @@ namespace ChaosUtil.Platform.Paths
     /// <summary> Create <see cref="Regex"/> patterns from glob patterns. </summary>
     public static class GlobRegex
     {
+        // TODO: fix ConvertGlobToRegex so that '**' matches everything
+        /// <summary> A glob pattern that matches every relative file or directory path. </summary>
+        public const string MATCH_ALL_GLOB = "**/*";
+
         // TODO: support '?' in glob
         // TODO: fix leading or trailing single asterisk matching at least one character (should also allow none)
 
         const string PATH_SEPARATOR = @"([/\\]+)";
 
         // TODO: Make this group actually match all characters allowed in path elements
-        const string PATH_ELEMENT_DELIMITER = @"[a-zA-Z0-9_+\.-]";
+        const string PATH_ELEMENT_DELIMITER = @"[a-zA-Z0-9\(\)_+\.-]";
         const string PATH_ELEMENT_INNER = "(" + PATH_ELEMENT_DELIMITER + "|[ ]" + ")";
 
         const string PATH_ELEMENT =
