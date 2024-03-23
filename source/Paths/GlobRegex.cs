@@ -17,7 +17,7 @@ namespace ChaosUtil.Platform.Paths
         const string PATH_SEPARATOR = @"([/\\]+)";
 
         // TODO: Make this group actually match all characters allowed in path elements
-        const string PATH_ELEMENT_DELIMITER = @"[a-zA-Z0-9_+\.-]";
+        const string PATH_ELEMENT_DELIMITER = @"[a-zA-Z0-9\(\)_+\.-]";
         const string PATH_ELEMENT_INNER = "(" + PATH_ELEMENT_DELIMITER + "|[ ]" + ")";
 
         const string PATH_ELEMENT =
