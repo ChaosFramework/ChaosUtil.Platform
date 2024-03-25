@@ -66,7 +66,7 @@ namespace ChaosUtil.Platform.Paths
         const string MULTI_DOUBLE_ASTERISK = "(" + DOUBLE_ASTERISK + PATH_SEPARATOR + DOUBLE_ASTERISK + ")";
 
         static readonly char[] pathSeparators = new[] { '/', '\\' };
-        static readonly char[] needsEscape = new[] { '.', '(', ')', '[', ']', '{', '}' };
+        static readonly char[] needsEscape = new[] { '.', '(', ')', '[', ']', '{', '}', '$', '^' };
 
         static readonly Regex pathSeparatorRegex = new Regex(PATH_SEPARATOR, RegexOptions.Compiled);
         static readonly Regex multiDoubleAsteriskRegex = new Regex(MULTI_DOUBLE_ASTERISK, RegexOptions.Compiled);
