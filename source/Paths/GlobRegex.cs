@@ -81,7 +81,9 @@ namespace ChaosUtil.Platform.Paths
         public static string ConvertGlobToRegex(string glob)
         {
             Match firstPathSeparator = pathSeparatorRegex.Match(glob);
-            bool startsWithPathSeparator = firstPathSeparator != null && firstPathSeparator.Index == 0;
+            bool startsWithPathSeparator = firstPathSeparator != null
+                && firstPathSeparator.Success
+                && firstPathSeparator.Index == 0;
 
             // reduce sequences like 'a/**/**/b' to 'a/**/b', to make path separator handling easier
             bool hasMultiDoubleAsterisk = true;
