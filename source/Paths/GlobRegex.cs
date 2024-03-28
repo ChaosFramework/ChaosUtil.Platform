@@ -66,7 +66,7 @@ namespace ChaosUtil.Platform.Paths
         const string MULTI_DOUBLE_ASTERISK = "(" + DOUBLE_ASTERISK + PATH_SEPARATOR + DOUBLE_ASTERISK + ")";
 
         static readonly char[] pathSeparators = new[] { '/', '\\' };
-        static readonly char[] needsEscape = new[] { '.', '(', ')', '[', ']', '{', '}' };
+        static readonly char[] needsEscape = new[] { '.', '(', ')', '[', ']', '{', '}', '$', '^' };
 
         static readonly Regex pathSeparatorRegex = new Regex(PATH_SEPARATOR, RegexOptions.Compiled);
         static readonly Regex multiDoubleAsteriskRegex = new Regex(MULTI_DOUBLE_ASTERISK, RegexOptions.Compiled);
@@ -81,7 +81,9 @@ namespace ChaosUtil.Platform.Paths
         public static string ConvertGlobToRegex(string glob)
         {
             Match firstPathSeparator = pathSeparatorRegex.Match(glob);
-            bool startsWithPathSeparator = firstPathSeparator != null && firstPathSeparator.Index == 0;
+            bool startsWithPathSeparator = firstPathSeparator != null
+                && firstPathSeparator.Success
+                && firstPathSeparator.Index == 0;
 
             // reduce sequences like 'a/**/**/b' to 'a/**/b', to make path separator handling easier
             bool hasMultiDoubleAsterisk = true;
