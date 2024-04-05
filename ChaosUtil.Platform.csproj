@@ -16,6 +16,7 @@
   <Import Project="submodules/ChaosPresets.Targets/Properties/Library.targets" />
   <Import Project="submodules/ChaosPresets.Targets/Paths/Output/bin.targets" />
   <PropertyGroup>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DocumentationFile>$(OutputPath)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
 
