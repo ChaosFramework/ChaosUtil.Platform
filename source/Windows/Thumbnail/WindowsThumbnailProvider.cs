@@ -125,7 +125,7 @@ namespace ChaosUtil.Platform.Windows.Thumbnail
             }
         }
 
-        unsafe static Bitmap ConvertRGB32toARGB32(Bitmap rgb32)
+        static Bitmap ConvertRGB32toARGB32(Bitmap rgb32)
         {
             const PixelFormat RGB32 = PixelFormat.Format32bppRgb;
             const PixelFormat ARGB32 = PixelFormat.Format32bppArgb;
@@ -139,14 +139,13 @@ namespace ChaosUtil.Platform.Windows.Thumbnail
             BitmapData scanRgb = rgb32.LockBits(bounds, ImageLockMode.ReadOnly, RGB32);
             BitmapData scanArgb = argb32.LockBits(bounds, ImageLockMode.WriteOnly, ARGB32);
 
-            int bytesPerRow = 4 * scanRgb.Width;
-            for (int xOffset = 0; xOffset < bytesPerRow; xOffset += 4)
-                for (int row = 0; row < scanRgb.Height; row++)
-                {
-                    IntPtr rgbPos = IntPtr.Add(scanRgb.Scan0, xOffset + row * scanRgb.Stride);
-                    IntPtr argbPos = IntPtr.Add(scanArgb.Scan0, xOffset + row * scanArgb.Stride);
-                    *(int*)argbPos = *(int*)rgbPos;
-                }
+            UIntPtr bytesPerRow = new UIntPtr((uint)rgb32.Width * 4u);
+            for (int row = 0; row < scanRgb.Height; row++)
+            {
+                IntPtr rgbPos = IntPtr.Add(scanRgb.Scan0, row * scanRgb.Stride);
+                IntPtr argbPos = IntPtr.Add(scanArgb.Scan0, row * scanArgb.Stride);
+                Memory.Copy(argbPos, rgbPos, bytesPerRow);
+            }
 
             rgb32.UnlockBits(scanRgb);
             argb32.UnlockBits(scanArgb);
