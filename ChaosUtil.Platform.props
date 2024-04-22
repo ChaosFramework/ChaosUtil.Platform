@@ -25,7 +25,7 @@
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <COMReference Include="Shell32">
+    <COMReference Include="Shell32" Condition="'$(COM_Supported)' == 'true'">
       <Guid>{50A7E9B0-70EF-11D1-B75A-00A0C90564FE}</Guid>
       <VersionMajor>1</VersionMajor>
       <VersionMinor>0</VersionMinor>

@@ -3,6 +3,7 @@
 
   <PropertyGroup>
     <ProjectStyle>SDK</ProjectStyle>
+    <COM_Supported>false</COM_Supported>
   </PropertyGroup>
 
   <Import Project="ChaosUtil.Platform.props" />

@@ -7,6 +7,8 @@
 
   <PropertyGroup>
     <ProjectStyle>VS</ProjectStyle>
+    <COM_Supported>true</COM_Supported>
+    <DefineConstants>$(DefineConstants);COM_Supported</DefineConstants>
   </PropertyGroup>
 
   <Import Project="Directory.Build.props" />
