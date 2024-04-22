@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <ProjectStyle>SDK</ProjectStyle>
+  </PropertyGroup>
+
+  <Import Project="ChaosUtil.Platform.props" />
+
+  <ItemGroup>
+    <Compile Include="source/**/*.cs" />
+
+    <None Include="License/*.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
