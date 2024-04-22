@@ -14,8 +14,23 @@ using System.Runtime.InteropServices;
 
 namespace ChaosUtil.Platform.Windows.Thumbnail
 {
+    /// <summary> Provides functionality to load a thumbnail for a file. </summary>
     public static class WindowsThumbnailProvider
     {
+        /// <summary> Returns a <see cref="Bitmap"/> containing the thumbnail for the given <paramref name="fileName"/>. </summary>
+        /// <param name="fileName"> The path to the file to retrieve the thumbnail for. </param>
+        /// <param name="width">
+        ///     The desired width of the thumbnail.
+        ///     Depending on <paramref name="options"/> the actual width may differ.
+        /// </param>
+        /// <param name="height">
+        ///     The desired height of the thumbnail.
+        ///     Depending on <paramref name="options"/> the actual height may differ.
+        /// </param>
+        /// <param name="options">
+        ///     Control whether or how a loaded thumbnail is scaled
+        ///     and whether it may be loaded from memory, cache or disk.
+        /// </param>
         public static Bitmap GetThumbnail(string fileName, int width, int height, ThumbnailOptions options)
         {
             IntPtr hBitmap = IntPtr.Zero;
