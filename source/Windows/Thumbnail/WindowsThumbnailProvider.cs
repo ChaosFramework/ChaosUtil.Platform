@@ -115,7 +115,7 @@ namespace ChaosUtil.Platform.Windows.Thumbnail
             }
             catch (System.Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error while extracting thumbnail for {fileName}");
+                System.Diagnostics.Debug.WriteLine($"Error while extracting thumbnail for {fileName}: {ex.Message}");
                 throw;
             }
             finally
