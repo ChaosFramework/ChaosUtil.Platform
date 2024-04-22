@@ -15,7 +15,7 @@ namespace ChaosUtil.Platform.Windows.Thumbnail
     public enum ThumbnailOptions
     {
         /// <summary> Scale down to fit the desired size without changing aspect ratio. </summary>
-        RESIZETOFIT = 0x00,
+        ResizeToFit = 0x00,
 
         /// <summary> Specifies that the resulting thumbnail may be larger than the desired size. </summary>
         BiggerSizeOk = 0x01,
