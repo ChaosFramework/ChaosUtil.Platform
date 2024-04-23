@@ -29,7 +29,7 @@ namespace ChaosUtil.Platform.Windows.Thumbnail
         /// <summary> Only return thumbnails. </summary>
         ThumbnailOnly = 0x08,
 
-        /// <summary> Only fetch from disk if the icon is already cached. </summary>
+        /// <summary> Only fetch from thumbnail cache on disk if the icon is already cached. </summary>
         InCacheOnly = 0x10,
     }
 }
