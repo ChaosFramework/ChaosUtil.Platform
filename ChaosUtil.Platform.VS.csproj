@@ -11,7 +11,8 @@
     <DefineConstants>$(DefineConstants);COM_Supported</DefineConstants>
   </PropertyGroup>
 
-  <Import Project="Directory.Build.props" />
+  <Import Project="submodules/ChaosPresets.Targets/Frameworks/net4.5.2.targets" />
+  <Import Project="submodules/ChaosPresets.Targets/Paths/Output/bin.targets" />
   <Import Project="ChaosUtil.Platform.props" />
 
   <!-- Included Files -->
@@ -22,6 +23,13 @@
     <None Include="License\*.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
 
   <!-- Default Targets for Building CSharp Projects -->

@@ -4,6 +4,7 @@
   <PropertyGroup>
     <ProjectStyle>SDK</ProjectStyle>
     <COM_Supported>false</COM_Supported>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <Import Project="ChaosUtil.Platform.props" />
@@ -14,6 +15,11 @@
     <None Include="License/*.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="8.0.6" />
+    <PackageReference Include="System.IO.FileSystem.AccessControl" Version="5.0.0" />
   </ItemGroup>
 
 </Project>
