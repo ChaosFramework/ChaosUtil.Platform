@@ -25,17 +25,12 @@
   <!-- References -->
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Drawing" />
   </ItemGroup>
 
   <!-- Included Files -->
   <ItemGroup>
     <Compile Include="source\**\*.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-
-    <None Include="License\*.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
   <!-- Default Targets for Building CSharp Projects -->
