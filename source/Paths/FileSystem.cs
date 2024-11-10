@@ -51,18 +51,5 @@ namespace ChaosUtil.Platform.Paths
         /// </returns>
         static bool Affects(this FileSystemAccessRule rule, FileSystemRights requestedRights)
             => (rule.FileSystemRights & requestedRights) > 0;
-
-        /// <summary> Returns the path a shortcut leads to. </summary>
-        /// <param name="shortcutFile"> The path to the shortcut file. </param>
-        public static string GetShortcutTargetFile(string shortcutFile)
-        {
-            Shell32.FolderItem target = new Shell32.Shell()
-                .NameSpace(Path.GetDirectoryName(shortcutFile))
-                .ParseName(Path.GetFileName(shortcutFile));
-
-            return target != null
-                ? ((Shell32.ShellLinkObject)target.GetLink).Path
-                : null;
-        }
     }
 }
