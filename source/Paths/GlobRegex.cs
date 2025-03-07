@@ -143,10 +143,28 @@ namespace ChaosUtil.Platform.Paths
             foreach (char c in needsEscape)
                 element = element.Replace(c.ToString(), $@"\{c}");
 
-            element = Regex.Replace(element, START_ASTERISK_PATTERN, START_ASTERISK_REPLACE); // replace leading *
-            element = Regex.Replace(element, END_ASTERISK_PATTERN, END_ASTERISK_REPLACE);     // replace trailing *
-            element = Regex.Replace(element, MID_ASTERISK_PATTERN, MID_ASTERISK_REPLACE);     // replace remaining *
-            return $"({element})";
+            StringBuilder newElement = new StringBuilder();
+            for (int i = 0; i < element.Length; i++)
+            {
+                char c = element[i];
+                switch (c)
+                {
+                    case '*':
+                        if (i == 0)
+                            newElement.Append(START_ASTERISK_REPLACE);
+                        else if (i == element.Length - 1)
+                            newElement.Append(END_ASTERISK_REPLACE);
+                        else
+                            newElement.Append(MID_ASTERISK_REPLACE);
+                        break;
+
+                    default:
+                        newElement.Append(c);
+                        break;
+                }
+            }
+
+            return $"({newElement})";
         }
     }
 }
