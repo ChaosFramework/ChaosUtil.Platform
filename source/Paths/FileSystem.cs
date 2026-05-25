@@ -23,7 +23,7 @@ namespace ChaosUtil.Platform.Paths
         {
             try
             {
-                DirectorySecurity access = Directory.GetAccessControl(path);
+                DirectorySecurity access = new DirectoryInfo(path).GetAccessControl();
                 AuthorizationRuleCollection rules = access.GetAccessRules(true, true, typeof(NTAccount));
 
                 foreach (FileSystemAccessRule rule in rules.OfType<FileSystemAccessRule>())
