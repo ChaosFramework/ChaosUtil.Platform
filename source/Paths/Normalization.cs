@@ -11,7 +11,9 @@ namespace ChaosUtil.Platform.Paths
         /// <returns> The normalized path. </returns>
         public static string NormalizePath(string path)
             => string.Join("\\", path
+#if OS_WINDOWS
                 .ToLower()
+#endif
                 .Split('/', '\\')
                 .Select(f => f.Trim())
                 .Where(f => !string.IsNullOrEmpty(f))
@@ -28,7 +30,11 @@ namespace ChaosUtil.Platform.Paths
             => (string.IsNullOrEmpty(path?.Trim())
                    ? Environment.CurrentDirectory
                    : System.IO.Path.GetFullPath(path)
-               ).ToLower();
+               )
+#if OS_WINDOWS
+               .ToLower()
+#endif
+               ;
 
         /// <summary>
         ///     Normalizes the provided relative path.
