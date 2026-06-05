@@ -38,6 +38,11 @@ namespace ChaosUtil.Platform.Paths
                 // we may not even query the rights for this filesystem entry
                 return false;
             }
+            catch (PlatformNotSupportedException)
+            {
+                // using this API on non-Windows systems is not supported, so assume we can access the file
+                return true;
+            }
 
             return true;
         }
