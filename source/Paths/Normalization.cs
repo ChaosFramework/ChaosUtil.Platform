@@ -10,8 +10,7 @@ namespace ChaosUtil.Platform.Paths
         /// <param name="path"> The path to be normalized. </param>
         /// <returns> The normalized path. </returns>
         public static string NormalizePath(string path)
-            => string.Join("\\", path
-                .ToLower()
+            => string.Join("/", path
                 .Split('/', '\\')
                 .Select(f => f.Trim())
                 .Where(f => !string.IsNullOrEmpty(f))
