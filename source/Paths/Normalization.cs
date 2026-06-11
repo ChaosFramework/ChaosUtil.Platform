@@ -27,7 +27,7 @@ namespace ChaosUtil.Platform.Paths
             => (string.IsNullOrEmpty(path?.Trim())
                    ? Environment.CurrentDirectory
                    : System.IO.Path.GetFullPath(path)
-               ).ToLower();
+               );
 
         /// <summary>
         ///     Normalizes the provided relative path.
