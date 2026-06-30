@@ -10,12 +10,14 @@ namespace ChaosUtil.Platform.Paths
         /// <param name="path"> The path to be normalized. </param>
         /// <returns> The normalized path. </returns>
         public static string NormalizePath(string path)
-            => string.Join("\\", path
-                .ToLower()
+        {
+            string split = string.Join("/", path
                 .Split('/', '\\')
                 .Select(f => f.Trim())
                 .Where(f => !string.IsNullOrEmpty(f))
                 );
+            return path.Length > 0 && path[0] == '/' ? '/' + split : split;
+        }
 
         /// <summary>
         ///     Returns the normalized full path of the provided path (relative or absolute).
@@ -25,10 +27,10 @@ namespace ChaosUtil.Platform.Paths
         /// <param name="path"> The path to be normalized. </param>
         /// <returns> The normalized full path. </returns>
         public static string NormalizeFullPath(string path)
-            => (string.IsNullOrEmpty(path?.Trim())
+            => NormalizePath(string.IsNullOrEmpty(path?.Trim())
                    ? Environment.CurrentDirectory
                    : System.IO.Path.GetFullPath(path)
-               ).ToLower();
+               );
 
         /// <summary>
         ///     Normalizes the provided relative path.
