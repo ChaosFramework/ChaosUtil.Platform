@@ -21,6 +21,8 @@ namespace ChaosUtil.Platform.Paths
         /// </returns>
         public static bool HasAccess(string path, FileSystemRights requestedRights = FileSystemRights.FullControl)
         {
+            // TODO: move implementations to ChaosUtil.Platform.* libraries
+#if OS_WINDOWS
             try
             {
                 DirectorySecurity access = new DirectoryInfo(path).GetAccessControl();
@@ -38,7 +40,9 @@ namespace ChaosUtil.Platform.Paths
                 // we may not even query the rights for this filesystem entry
                 return false;
             }
-
+#else
+#warning FileSystem.HasAccess is not implemented for this platform!
+#endif
             return true;
         }
 
